@@ -4,10 +4,10 @@ Such as building only the game and GUI projects
 BUILD_GAME_RELEASE, will compile pretty much everything in release mode.
 
 ## Game
-Game files, like resources,object definitions, etc.
+Game files, like resources,object definitions, etc. Also, this is the actual entrypoint.
 
 ## Engine
-Where the base engine and tools are
+Where the base engine and tools are. Also, the engine is essentially a static library for `game`.
 
 ## chixLib
 A static library that contains utils like linear math and such

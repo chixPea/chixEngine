@@ -1,2 +1,4 @@
 .idea
 cmake-build-debug
+chixLib/cmake-build-debug
+engine/cmake-build-debug
