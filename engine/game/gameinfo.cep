@@ -1,0 +1,7 @@
+# FILE FOR CHIXENGINE TO READ
+{
+	game 		"conscription"
+	title 		"Conscription"				# Window title
+
+	mp-support	false
+}
