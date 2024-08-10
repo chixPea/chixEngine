@@ -1,6 +1,6 @@
 #include "window.h"
 
-ChixApp::ChixApp(int w, int h, std::string t) {
+Display::Display(int w, int h, std::string t) {
     glfwInit();
 
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
@@ -10,19 +10,44 @@ ChixApp::ChixApp(int w, int h, std::string t) {
     windowHandle = glfwCreateWindow(w, h, t.c_str(), nullptr, nullptr);
 
     glfwMakeContextCurrent(windowHandle);
-    //init glad
+
+    InitOpenGL();
 }
 
-void ChixApp::updateApp() {
+Display::~Display() {
+    Destroy();
+}
+
+
+bool Display::ShouldClose() {
+    return glfwWindowShouldClose(windowHandle);
+}
+
+void Display::PollEvents() {
+    glfwPollEvents();
+}
+
+void Display::InitOpenGL() {
+    gladLoadGL();
+}
+
+void Display::Run() {
     while(!glfwWindowShouldClose(windowHandle)) {
         glfwPollEvents();
-        glfwSwapBuffers(windowHandle);
     }
+}
+
+void Display::SwapBuffers()
+{
+    glfwSwapBuffers(windowHandle);
+}
+
+void Display::Destroy() {
     glfwDestroyWindow(windowHandle);
     glfwTerminate();
 }
 
-void ChixApp::frameSizeCallBack(GLFWwindow* window, int width, int height) {
+void Display::frameSizeCallBack(GLFWwindow* window, int width, int height) {
 #if LOG_WINDOW_SIZE == 1
     std::cout << width << "    " << height << "\n";
 #endif

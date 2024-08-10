@@ -1,8 +1,14 @@
 #include <iostream>
 
-#include "../../utility/window.h"
+#include "../../program/program.h"
+
 int main() {
-    std::cout << "Chixxyyy tehe\n";
-    ChixApp app(800, 600, "ChixTest");
-    app.updateApp();
+    Program prog;
+
+    // prog.world.AddPrimitive();
+
+    while(!prog.ShouldClose())
+    {
+        prog.Frame();
+    }
 }

@@ -3,14 +3,7 @@ project(chixEngine)
 
 set(CMAKE_CXX_STANDARD 17)
 
-#Add GLFW
 add_subdirectory("external/glfw")
-#Link:
-# - OpenGL
-# - GLAD
-# - chixLib (NO GLM!!! YASSS)
-# - chixGUI
-# - stb_image
 
 set(BINARY_NAME "chixEngine")
 
@@ -25,19 +18,21 @@ set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
 set(ENGINE_HEADERS src/*.h)
 set(ENGINE_SOURCES src/*.cpp)
 
+#Add GLAD headers
+include_directories("external/glad/include")
+
+
 if(UNIX)
         # Compile GLAD's implementation file with
         add_executable(${BINARY_NAME}
-                # src/stb_image.h
-                # src/shader.h
-                # src/shader.cpp
-                # src/input.h
-                # src/input.cpp
-                # src/types.h
-                
-                # lib/glad/src/glad.c
-                utility/window.h
-                utility/window.cpp
+                external/glad/src/glad.c
+
+                core/window.h
+                core/window.cpp
+
+                resources/shader.cpp
+
+                program/program.cpp
 
                 sys/linux/main.cpp
         )
