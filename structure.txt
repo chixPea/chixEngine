@@ -1,0 +1,28 @@
+Main()
+|
+Program ---------------> Project(Object)
+|                           |
+Display                     |
+|                           |
+WorldState <---------- Asset Manager ---------> shaderBuffer_g
+|                             |                     |
+Store & Update Lights/Entities|                     |
+|                             |                     |
+|             TextureBuffer(Managed by frontend)    |
+|                                                   |
+RenderWorld => MeshData ----> VBO(Goes to GPU)      |
+|                                                   |
+|                                                   |
+Frontend                                            |
+|                                                   |
+Cull/SubmitCommands                                 |
+|                                                   |
+Backend <---------------------------------- UseShaderBuffer()
+|
+ExecuteCommands()
+|
+|
+OpenGL
+|
+|
+GPU

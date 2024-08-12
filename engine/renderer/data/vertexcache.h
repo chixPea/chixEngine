@@ -1,18 +1,24 @@
 #pragma once
-#include "Common.h"
+#include "../../Common.h"
+#include "../gl/vertexarray.h"
 
 typedef struct {
     uint vbo;
+
+    int size;
 } vertexCacheData;
 
 class VertexCache {
 private:
     vertexCacheData data;
 public:
-    void AddData();
-    void BindData();
+    void Alloc(void *data, int size);
+    void DeAlloc();
 
-    void RemoveData();
+    void AddData(int size, const void *data);
+    void DeleteData();
+
+    void BindData();
     void UnBind();
 
     int GetSize();

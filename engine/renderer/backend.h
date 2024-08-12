@@ -1,13 +1,14 @@
 #pragma once
 #include "../Common.h"
-#include "window.h"
+#include "data/command.h"
 
-class Backend {
+class RenderBackend {
 private:
-    Display display;
-
-    void DrawCameraView();
-    void EndFrame();
+    void DrawCameraView(Display display);
+    void EndFrame(Display display);
 public:
-    void ExecuteCommandBuffer();
+    // RenderBackend();
+    void ExecuteCommands(CommandBuffer buff);
+    void ExecuteCommand(backenCommand_s cmd, Display display);
+    void BeginFrame(Display display);
 };

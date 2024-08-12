@@ -27,12 +27,20 @@ if(UNIX)
         add_executable(${BINARY_NAME}
                 external/glad/src/glad.c
 
+                resources/shader.cpp
+
+                renderer/gl/vertexarray.cpp
+
+                renderer/data/vertexcache.cpp
+
+                program/program.cpp
+                renderer/backend.cpp
+                renderer/frontend.cpp
+                
+
                 core/window.h
                 core/window.cpp
 
-                resources/shader.cpp
-
-                program/program.cpp
 
                 sys/linux/main.cpp
         )

@@ -11,7 +11,10 @@ Display::Display(int w, int h, std::string t) {
 
     glfwMakeContextCurrent(windowHandle);
 
-    InitOpenGL();
+    std::cout << "gladLoadGL() result: " << (gladLoadGL()) << '\n';
+
+    glViewport(0, 0, 800, 600);
+    glClearColor(0.0f, 0.5f, 0.7f, 1.0f);
 }
 
 Display::~Display() {
@@ -25,10 +28,6 @@ bool Display::ShouldClose() {
 
 void Display::PollEvents() {
     glfwPollEvents();
-}
-
-void Display::InitOpenGL() {
-    gladLoadGL();
 }
 
 void Display::Run() {

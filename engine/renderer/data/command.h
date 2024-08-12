@@ -2,8 +2,17 @@
 typedef enum {
     BKE_NO_COMM = 0,
     BKE_DRAW_VIEW,
-} backendCommand_t;
+    BKE_CLEAR,
+    BKE_CLEAR_COLOR
+} backendCommandID_t;
 
 typedef struct {
-	backendCommand_t commandId, *next;
-} emptyBackEndCommand_t;
+    backendCommandID_t id;
+} backenCommand_s;
+
+class CommandBuffer {
+public:
+    backenCommand_s commands[8];
+
+    int count;
+};
